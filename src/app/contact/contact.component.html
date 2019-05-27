@@ -1,0 +1,76 @@
+<br>
+<br>
+
+
+
+<h4><p class="text-center">{{mytitle}}</p></h4>
+
+<div class="form-group">
+  <label for="usr">First Name & Last Name:</label>
+  <div class="input-group" id="usr">
+      <!-- Two Way Binding:  -->
+      <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="firstname" />
+      <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="lastName"/>
+  </div>
+</div>
+
+<!-- One Way Binding:  -->
+<p>
+{{firstname}} {{lastName}}
+</p>
+
+<div class="form-group">
+  <div class="row">
+    <div class="col-lg-6 col-12">
+      
+      <div class="valid-feedback">Valid.</div>
+      <div class="invalid-feedback">Please fill out thie field.</div>
+    </div>
+    <div class="col-lg-4 col-12">
+      <label for="City">City :</label>
+      
+        <!-- Directive ngFor -->
+      <select class="form-control selectWidth">
+
+        <option *ngFor="let city of cities">{{city.name}}</option>
+    
+      </select>
+
+    </div>
+    <div class="col-lg-2 col-12">
+      <label for="Amount"> Amount € :</label>
+      <!-- Binding for Pipe -->
+      <input type="text" class="form-control" id="amount" [(ngModel)]="amount"  >
+      <!-- pipe -->
+      <p>{{amount | number}}</p>
+    </div>
+  </div>
+</div>
+
+
+  
+
+<!-- Rounded switch -->
+
+<label class="form-switch text-success">
+    <!-- Binding for Directive ngIf -->
+    <input type="checkbox" [(ngModel)]="isRequest">
+     <i></i>  Please choose the confirmation
+  </label>
+
+  <!-- Directive ngIf -->
+  <p *ngIf="isRequest">
+    You have choosen : Get Payment Receipt 
+  </p>
+
+<button type="button" class="btn btn-lg btn-toggle active" data-toggle="button" aria-pressed="true" autocomplete="off">
+    <div class="handle"></div>
+  </button>
+
+<div class="row justify-content-end">
+    <div class="col-1">
+      <!-- Event Binding -->
+      <button (click)="submit()" class="btn btn-info justify-content-end align-self-end" 
+      style="margin-left: -25px">Submit</button>
+    </div>
+  </div>
